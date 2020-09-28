@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Clock</title>
     <style>
@@ -7,10 +8,17 @@
             background: #060608;
         }
 
-        .clock {
+        .time {
             color: #2470a0;
-            font-size: 4em;
-            font-family: Helvetica Neue ,Helvetica, Arial, sans-serif;
+            font-size: 5em;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            text-align: center;
+        }
+
+        .date {
+            color: #2470a0;
+            font-size: 2em;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
             text-align: center;
         }
 
@@ -23,21 +31,25 @@
             transform: translate(-50%, -50%);
         }
     </style>
+    <meta charset="UTF-8">
 </head>
 
 <body>
     <div class="centre">
-        <div id="date-display" class="clock"></div>
-        <div id="time-display" class="clock" onload="showTime()"></div>
+        <div id="time-display" class="time" onload="showTime()"></div>
+        <div id="date-display" class="date">Wednesday, 8 October 2020</div>
     </div>
     <script>
         function showTime() {
             var d = new Date();
-            time = d.toLocaleTimeString('en-NZ', { hour12: true });
-            date = d.toDateString();
 
-            document.getElementById("time-display").innerText = time;
-            document.getElementById("date-display").innerText = date;
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+            time = d.toLocaleTimeString('en-NZ', { hour12: true });
+            date = d.toLocaleDateString('en-NZ', options);
+
+            document.getElementById("time-display").innerText = time.toUpperCase();
+            //    document.getElementById("date-display").innerText = date;
 
             setTimeout(showTime, 1000);
         }
