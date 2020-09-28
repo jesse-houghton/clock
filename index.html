@@ -37,7 +37,7 @@
 <body>
     <div class="centre">
         <div id="time-display" class="time" onload="showTime()"></div>
-        <div id="date-display" class="date">Wednesday, 8 October 2020</div>
+        <div id="date-display" class="date"></div>
     </div>
     <script>
         function showTime() {
@@ -49,7 +49,7 @@
             date = d.toLocaleDateString('en-NZ', options);
 
             document.getElementById("time-display").innerText = time.toUpperCase();
-            //    document.getElementById("date-display").innerText = date;
+            document.getElementById("date-display").innerText = date;
 
             setTimeout(showTime, 1000);
         }
