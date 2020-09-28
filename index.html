@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock</title>
+    <style>
+        body {
+            background: #060608;
+        }
+
+        .clock {
+            color: #2470a0;
+            font-size: 4em;
+            font-family: Helvetica Neue ,Helvetica, Arial, sans-serif;
+            text-align: center;
+        }
+
+        .centre {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 51%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="centre">
+        <div id="date-display" class="clock"></div>
+        <div id="time-display" class="clock" onload="showTime()"></div>
+    </div>
+    <script>
+        function showTime() {
+            var d = new Date();
+            time = d.toLocaleTimeString('en-NZ', { hour12: true });
+            date = d.toDateString();
+
+            document.getElementById("time-display").innerText = time;
+            document.getElementById("date-display").innerText = date;
+
+            setTimeout(showTime, 1000);
+        }
+
+        showTime();
+    </script>
+</body>
+
+</html>
